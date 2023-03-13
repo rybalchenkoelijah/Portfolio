@@ -53,5 +53,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.corektx)
+    implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    debugImplementation(libs.compose.ui.tooling)
 }

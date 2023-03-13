@@ -1,7 +1,7 @@
 [versions]
 # Project
 android_gradle_plugin = "7.4.2"
-kotlin = "1.7.20"
+kotlin = "1.8.10"
 
 # Plugins
 ksp = "1.7.22-1.0.8"
@@ -10,10 +10,9 @@ ksp = "1.7.22-1.0.8"
 corektx = "1.9.0"
 
 # Compose
-compose = "1.3.3"
-compose_compiler = "1.3.2"
+compose = "2023.01.00"
+compose_compiler = "1.4.3"
 compose_activity = "1.6.1"
-compose_material3 = "1.0.1"
 
 
 [libraries]
@@ -24,10 +23,13 @@ kotlin_gradle_plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 # AndroidX
 androidx_corektx = { module = "androidx.core:core-ktx", version.ref = "corektx" }
 
-compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose_activity = { module = "androidx.activity:activity-compose", version.ref = "compose_activity" }
-compose_material3 = { module = "androidx.compose.material3:material3", version.ref = "compose_material3" }
+#Compose
+compose_bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
+compose_ui = { module = "androidx.compose.ui:ui" }
+compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose_activity = { module = "androidx.activity:activity-compose" }
+compose_material3 = { module = "androidx.compose.material3:material3" }
 
 [bundles]
 compose = ["compose.ui", "compose.toolingpreview", "compose.activity", "compose.material3"]
