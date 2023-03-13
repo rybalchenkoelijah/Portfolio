@@ -4,6 +4,7 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 object Versions {
     const val versionCode = 1
     const val versionName = "1.0.0"
+    const val namespace = "com.crypto.portfolio"
 
     const val compileSdk = 33
     const val targetSdk = 33
