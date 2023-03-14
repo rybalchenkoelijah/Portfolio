@@ -20,11 +20,6 @@ plugins {
     `kotlin-dsl`
 }
 
-//kotlin {
-//    this.
-//   kotlinDaemonJvmArgs = listOf("-Xcontext-receivers")
-//}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -45,8 +40,12 @@ gradlePlugin {
     }
 }
 
-tasks.withType<KotlinCompile>().all {
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xcontext-receivers")
+afterEvaluate {
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + "-Xsam-conversions=class" + "-Xcontext-receivers"
+            apiVersion = "1.7"
+            languageVersion = "1.7"
+        }
     }
 }

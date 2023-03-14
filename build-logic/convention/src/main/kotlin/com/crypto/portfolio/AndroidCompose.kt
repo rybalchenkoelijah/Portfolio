@@ -16,33 +16,35 @@
 
 package com.crypto.portfolio
 
+import com.android.build.api.dsl.BuildFeatures
+import com.android.build.api.dsl.BuildType
 import com.android.build.api.dsl.CommonExtension
-import com.crypto.portfolio.utils.ProjectScope
-import com.crypto.portfolio.utils.implementation
+import com.android.build.api.dsl.DefaultConfig
+import com.android.build.api.dsl.ProductFlavor
+import com.crypto.portfolio.utils.debugImplementation
+import com.crypto.portfolio.utils.implementationBom
+import com.crypto.portfolio.utils.implementationBundle
+import com.crypto.portfolio.utils.version
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
-import java.io.File
 
 /**
  * Configure Compose-specific options
  */
-fun ProjectScope<*,*,*,*>.configureAndroidCompose() {
+context(Project, CommonExtension<BF, BT, DC, PF>)
+fun <BF : BuildFeatures, BT : BuildType, DC : DefaultConfig, PF : ProductFlavor> configureAndroidCompose() {
 
     buildFeatures {
         compose = true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = findVersion("compose-compiler").get().toString()
+        kotlinCompilerExtensionVersion = version("compose-compiler")
     }
 
     dependencies {
-        val bom = findLibrary("compose-bom").get()
-
-        add("implementation", platform(bom))
-        add("implementation", findBundle("compose").get())
-        add("debugImplementation", findLibrary("compose-ui-tooling").get())
+        implementationBom("compose-bom")
+        implementationBundle("compose")
+        debugImplementation("compose-ui-tooling")
     }
 }
