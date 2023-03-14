@@ -3,6 +3,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("portfolio.android.application.compose")
 }
 
 android {
@@ -35,14 +36,6 @@ android {
         targetCompatibility = Versions.javaCompileVersion
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
-
     packagingOptions {
         resources.excludes.apply {
             add("META-INF/AL2.0")
@@ -53,7 +46,4 @@ android {
 
 dependencies {
     implementation(libs.androidx.corektx)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
-    debugImplementation(libs.compose.ui.tooling)
 }

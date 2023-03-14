@@ -23,12 +23,12 @@ kotlin_gradle_plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 # AndroidX
 androidx_corektx = { module = "androidx.core:core-ktx", version.ref = "corektx" }
 
-#Compose
+# Compose
 compose_bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
 compose_ui = { module = "androidx.compose.ui:ui" }
 compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview" }
-compose_activity = { module = "androidx.activity:activity-compose" }
+compose_activity = { module = "androidx.activity:activity-compose", version.ref = "compose_activity" }
 compose_material3 = { module = "androidx.compose.material3:material3" }
 
 [bundles]
